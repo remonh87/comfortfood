@@ -22,7 +22,10 @@ class LaunchScreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         launch_pizza_button.setOnClickListener {
-
+            val intent =  internalIntent(requireContext(), "com.remonh87.pizza.open")
+            startActivity(intent)
         }
     }
+    private fun internalIntent(context: Context, action: String) = Intent(action).setPackage(context.packageName)
+
 }

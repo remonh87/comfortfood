@@ -1,2 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.remonh87.pizza" />
+    package="com.remonh87.pizza">
+
+    <application>
+        <activity android:name=".PizzaOrderActivity">
+            <intent-filter>
+                <action android:name="com.remonh87.pizza.open"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>
