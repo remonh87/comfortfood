@@ -1,2 +1,3 @@
 rootProject.name='Comfortfood'
 include ':app'
+include ':pizza'
