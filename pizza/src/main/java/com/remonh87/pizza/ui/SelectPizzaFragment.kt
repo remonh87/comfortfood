@@ -48,7 +48,7 @@ class SelectPizzaFragment : Fragment() {
             }
         }
 
-        viewModel.pizzaOrder.observe(this, orderObserver )
+        viewModel.pizzaOrder.observe(viewLifecycleOwner, orderObserver )
 
 
         pizza_size_selection.check(R.id.medium_selection)

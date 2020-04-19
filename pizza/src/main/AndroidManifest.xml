@@ -2,7 +2,8 @@
     package="com.remonh87.pizza">
 
     <application>
-        <activity android:name=".PizzaOrderActivity">
+        <activity android:name=".PizzaOrderActivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar">
             <intent-filter>
                 <action android:name="com.remonh87.pizza.open"/>
                 <category android:name="android.intent.category.DEFAULT" />
