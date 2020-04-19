@@ -28,7 +28,11 @@ class LaunchScreenFragment : Fragment() {
         }
 
         launch_burgers_button.setOnClickListener {
-            startActivity(FlutterActivity.createDefaultIntent(requireContext()))
+            val flutterActivity = FlutterActivity.
+                withCachedEngine(comfortFoodEngineId)
+                .build(requireContext())
+
+            startActivity(flutterActivity)
         }
     }
     private fun internalIntent(context: Context, action: String) = Intent(action).setPackage(context.packageName)
