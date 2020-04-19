@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import io.flutter.embedding.android.FlutterActivity
 import kotlinx.android.synthetic.main.placeholder_fragment.*
 
 class LaunchScreenFragment : Fragment() {
@@ -24,6 +25,10 @@ class LaunchScreenFragment : Fragment() {
         launch_pizza_button.setOnClickListener {
             val intent =  internalIntent(requireContext(), "com.remonh87.pizza.open")
             startActivity(intent)
+        }
+
+        launch_burgers_button.setOnClickListener {
+            startActivity(FlutterActivity.createDefaultIntent(requireContext()))
         }
     }
     private fun internalIntent(context: Context, action: String) = Intent(action).setPackage(context.packageName)

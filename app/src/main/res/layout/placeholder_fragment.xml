@@ -26,4 +26,13 @@
         app:layout_constraintStart_toStartOf="@id/placeholder_label"
         app:layout_constraintTop_toBottomOf="@id/placeholder_label" />
 
+    <Button
+        android:id="@+id/launch_burgers_button"
+        android:text="Mike's burgers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="@id/placeholder_label"
+        app:layout_constraintTop_toBottomOf="@id/launch_pizza_button" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
