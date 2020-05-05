@@ -13,7 +13,7 @@ class Order {
         var order = ""
 
         val orderLinesPerRestaurantIterator = orderlines.groupBy { it.restaurant }.iterator()
-        
+
         while (orderLinesPerRestaurantIterator.hasNext()){
             val entry = orderLinesPerRestaurantIterator.next()
             order += "${entry.key} \t \$${getPriceForRestaurant(entry.key)}"

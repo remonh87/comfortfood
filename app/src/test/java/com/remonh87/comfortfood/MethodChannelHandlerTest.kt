@@ -16,15 +16,18 @@ class MethodChannelHandlerTest {
 
     lateinit var sut: MethodChannelHandler
 
+    @MockK
+    lateinit var order: Order
+
 
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
-        sut = MethodChannelHandler()
+        sut = MethodChannelHandler(order::add)
     }
 
     @Test
-    fun `Invoking completeOrder method with correct arguments`() {
+    fun `It invokes completeOrder method with correct arguments`() {
         val call = MethodCall("completeOrder", 10.0)
         sut.onMethodCall(call, result)
 
@@ -32,7 +35,15 @@ class MethodChannelHandlerTest {
     }
 
     @Test
-    fun `Invoking completeOrder method with incorrect arguments`() {
+    fun `It invokes injected method when succesfull`() {
+        val call = MethodCall("completeOrder", 10.0)
+        sut.onMethodCall(call, result)
+
+        verify(exactly = 1) { order.add(OrderLine(Restaurant.MIKE, "Burger", 10.0)) }
+    }
+
+    @Test
+    fun `It invokes completeOrder method with incorrect arguments`() {
         val call = MethodCall("completeOrder", "Faulty string")
         sut.onMethodCall(call, result)
 
@@ -40,4 +51,5 @@ class MethodChannelHandlerTest {
     }
 
 }
+
 
