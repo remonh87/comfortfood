@@ -19,7 +19,6 @@ class MethodChannelHandlerTest {
     @MockK
     lateinit var order: Order
 
-
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
@@ -49,7 +48,6 @@ class MethodChannelHandlerTest {
 
         verify(exactly = 1) { result.error(MethodChannelHandler.fatalFailureCode, any(), any()) }
     }
-
 }
 
 

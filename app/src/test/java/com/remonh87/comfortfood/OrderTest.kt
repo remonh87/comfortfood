@@ -23,6 +23,21 @@ class OrderTest {
     }
 
     @Test
+    fun `HasOrderLines is true in case it has orders `() {
+        val orderLine = OrderLine(Restaurant.LUIGI, "Test meal", 10.0)
+
+        sut.add(orderLine)
+
+        assertThat(sut.hasOrderLines).isTrue()
+    }
+
+
+    @Test
+    fun `HasOrderLines is false in case it has no orders `() {
+        assertThat(sut.hasOrderLines).isFalse()
+    }
+
+    @Test
     fun `It prints multi orderline correctly`() {
 
         val orderLine = OrderLine(Restaurant.LUIGI, "Test meal", 10.0)
@@ -53,5 +68,6 @@ class OrderTest {
         assertThat(sut.print()).isEqualTo(expectedPrint)
 
     }
+
 
 }

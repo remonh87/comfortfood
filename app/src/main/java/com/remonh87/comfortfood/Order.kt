@@ -4,9 +4,12 @@ class Order {
 
     private val orderlines = mutableListOf<OrderLine>()
 
+    val hasOrderLines get() = orderlines.isNotEmpty()
+
     fun add(line: OrderLine) {
         orderlines.add(line)
     }
+
 
     fun print(): String {
 
