@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key}) : super(key: key);
 
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -33,6 +34,8 @@ class _MyHomePageState extends State<MyHomePage> {
   final _burgerPrice = 8.00;
   double _price;
   bool _hasFries;
+  static const platformChannel= MethodChannel('comfortfoodChannel');
+
 
   @override
   void initState() {
@@ -46,6 +49,12 @@ class _MyHomePageState extends State<MyHomePage> {
       _hasFries = friesSelected;
       _price = _hasFries ? _burgerPrice + 2.00 : _burgerPrice;
     });
+  }
+
+  Future<void> completeOrder() async{
+    await platformChannel.invokeMethod('completeOrder', _price);
+
+    SystemChannels.platform.invokeMethod<void>('SystemNavigator.pop');
   }
 
   @override
@@ -107,8 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            SystemChannels.platform.invokeMethod<void>('SystemNavigator.pop'),
+        onPressed: completeOrder,
         tooltip: 'Order',
         child: Icon(Icons.check),
       ), // This trailing comma makes auto-formatting nicer for build methods.
