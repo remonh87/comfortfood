@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import io.flutter.embedding.android.FlutterActivity
-import kotlinx.android.synthetic.main.placeholder_fragment.*
+import kotlinx.android.synthetic.main.restaurant_overview_fragment.*
 
 class LaunchScreenFragment : Fragment() {
 
@@ -20,7 +20,7 @@ class LaunchScreenFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.placeholder_fragment, container, false)
+        return inflater.inflate(R.layout.restaurant_overview_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
