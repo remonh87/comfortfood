@@ -13,7 +13,7 @@ class OrderViewModel(private val order: Order): ViewModel() {
         orderData.value = order
     }
 
-    fun add(orderLine: OrderLine){
+    fun addToOrder(orderLine: OrderLine){
         order.add(orderLine)
         orderData.postValue(order)
     }

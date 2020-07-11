@@ -19,10 +19,11 @@ class MainActivity : AppCompatActivity() {
         MethodChannel(
             app.flutterEngine.dartExecutor.binaryMessenger,
             "comfortfoodChannel"
-        ).setMethodCallHandler(MethodChannelHandler(viewModel::add))
+        ).setMethodCallHandler(MethodChannelHandler(viewModel::addToOrder))
 
         val fragment = LaunchScreenFragment()
 
-        supportFragmentManager.beginTransaction().add(R.id.main_fragment_container, fragment).commit()
+        supportFragmentManager.beginTransaction().add(R.id.main_fragment_container, fragment)
+            .commit()
     }
 }
