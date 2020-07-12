@@ -18,7 +18,8 @@ class MethodChannelHandler(
                 addOrder(OrderLine(Restaurant.MIKE, "Burger", price ))
                 result.success("Received")
             } else {
-                result.error(fatalFailureCode, "Incorect arguments supplied", "Should be a double")
+                result.error(fatalFailureCode, "Incorrect arguments supplied",
+                    "Should be a double")
             }
         } else {
             result.error(fatalFailureCode, "Incorrect method invoked", "")

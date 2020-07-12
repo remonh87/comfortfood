@@ -11,10 +11,19 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData.dark().copyWith(
         textTheme: TextTheme(
-          headline4: TextStyle(color: Colors.white),
-          headline5: TextStyle(color: Colors.white),
-          headline6: TextStyle(color: Colors.white),
-          bodyText1: TextStyle(color: Colors.white, fontSize: 16.0),
+          headline1: TextStyle(
+            color: Color.fromARGB(255, 242, 241, 237),
+            fontSize: 30.0,
+            fontWeight: FontWeight.bold,
+          ),
+          headline2: TextStyle(
+            color: Color.fromARGB(255, 242, 241, 237),
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+
+          ),
+          bodyText1: TextStyle(
+              color: Color.fromARGB(255, 242, 241, 237), fontSize: 18.0),
         ),
       ),
       home: MyHomePage(),
@@ -25,7 +34,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key}) : super(key: key);
 
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -34,8 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final _burgerPrice = 8.00;
   double _price;
   bool _hasFries;
-  static const platformChannel= MethodChannel('comfortfoodChannel');
-
+  static const platformChannel = MethodChannel('comfortfoodChannel');
 
   @override
   void initState() {
@@ -51,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  Future<void> completeOrder() async{
+  Future<void> completeOrder() async {
     await platformChannel.invokeMethod('completeOrder', _price);
 
     SystemChannels.platform.invokeMethod<void>('SystemNavigator.pop');
@@ -63,62 +70,72 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       backgroundColor: Colors.black54,
       body: SafeArea(
-        child: Column(
-          children: <Widget>[
-            Image.asset('assets/images/burger.webp'),
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0, bottom: 16.0),
-              child: Text(
+        child: Padding(
+          padding: const EdgeInsetsDirectional.fromSTEB(16.0, 40.0, 16.0, 0.0),
+          child: Column(
+            children: <Widget>[
+              Text(
                 'The ultimate burger',
-                style: textTheme.headline4,
+                style: textTheme.headline1,
               ),
-            ),
-            Text(
-              "Our signature burger with 100% Angus beef, cheddar cheese and our secret sauce.",
-              style: textTheme.bodyText1,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 28.0),
-              child: Divider(
-                color: Colors.white,
-                thickness: 2,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 28.0),
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    "Add fries to order:",
-                    style: textTheme.headline6,
-                  ),
-                  Checkbox(
-                    onChanged: (value) =>
-                        recalculatePrice(friesSelected: value),
-                    value: _hasFries,
-                  )
-                ],
-              ),
-            ),
-            Expanded(
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 28.0),
-                  child: Text(
-                    'Total price: \$${_price}0',
-                    style: textTheme.headline5,
-                  ),
+              Padding(
+                padding: const EdgeInsets.only(top: 16.0),
+                child: Text(
+                  "Our signature burger with 100% Angus beef, cheddar cheese and our secret sauce.",
+                  style: textTheme.bodyText1,
                 ),
               ),
-            )
-          ],
+              Padding(
+                padding: const EdgeInsets.only(top: 32.0),
+                child: Row(
+                  children: <Widget>[
+                    Text(
+                      "Add fries to order:",
+                      style: textTheme.bodyText1,
+                    ),
+                    Checkbox(
+                      onChanged: (value) =>
+                          recalculatePrice(friesSelected: value),
+                      value: _hasFries,
+                    )
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 70.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Text(
+                        '\$',
+                        style: textTheme.headline2,
+                      ),
+                    ),
+                    Text(
+                      '${_price}0',
+                      style: textTheme.headline1,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                  width: double.infinity,
+                  height: 300,
+                  child: Image.asset('assets/images/burger.webp')),
+            ],
+          ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: completeOrder,
-        tooltip: 'Order',
-        child: Icon(Icons.check),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 18.0),
+        child: FloatingActionButton(
+          onPressed: completeOrder,
+          backgroundColor: Color.fromARGB(255, 242, 241, 237),
+          tooltip: 'Order',
+          child: Icon(Icons.check),
+        ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
