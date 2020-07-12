@@ -7,19 +7,24 @@ class MethodChannelHandler(
     val addOrder: (line: OrderLine) -> Unit
 ) : MethodChannel.MethodCallHandler {
 
-    companion object{
+    companion object {
         const val fatalFailureCode = "FATAL"
     }
 
     override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
         if (call.method == "completeOrder") {
-            if (call.arguments is Double) {
-                val price = call.arguments as Double
-                addOrder(OrderLine(Restaurant.MIKE, "Burger", price ))
+            val argumentsRetrieved = call.arguments<List<*>>()
+            val description = argumentsRetrieved[0]
+            val price = argumentsRetrieved[1]
+
+            if (description is String && price is Double) {
+                addOrder(OrderLine(Restaurant.MIKE, description, price))
                 result.success("Received")
             } else {
-                result.error(fatalFailureCode, "Incorrect arguments supplied",
-                    "Should be a double")
+                result.error(
+                    fatalFailureCode, "Incorrect arguments supplied",
+                    "Should be a double"
+                )
             }
         } else {
             result.error(fatalFailureCode, "Incorrect method invoked", "")
