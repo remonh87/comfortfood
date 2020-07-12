@@ -128,22 +128,6 @@
         />
 
 
-<!--    <com.google.android.material.button.MaterialButton-->
-<!--        android:id="@+id/material_button"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginBottom="20dp"-->
-<!--        android:backgroundTint="#B9B9B9"-->
-<!--        android:text="Complete order"-->
-<!--        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"-->
-<!--        app:cornerRadius="10dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-
-<!--        app:strokeColor="#000000" />-->
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

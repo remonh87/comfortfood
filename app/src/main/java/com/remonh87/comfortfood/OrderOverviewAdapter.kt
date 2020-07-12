@@ -1,5 +1,6 @@
 package com.remonh87.comfortfood
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
@@ -22,6 +23,8 @@ class OrderOverviewAdapter(private val orderLines:List<OrderLine>) : RecyclerVie
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderViewHolder {
+        Log.e("AAAAA", "BLAATTTTTTTTTTTT: ${orderLines.size}")
+
         val inflater = LayoutInflater.from(parent.context)
         return OrderViewHolder(inflater, parent)
     }

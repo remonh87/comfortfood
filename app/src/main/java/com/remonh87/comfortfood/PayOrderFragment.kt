@@ -29,6 +29,7 @@ class PayOrderFragment : Fragment() {
                 layoutManager = LinearLayoutManager(context)
                 adapter = OrderOverviewAdapter(order.orderLines)
             }
+            order_total_price.text = order.totalPrice.toString()
         }
 
         viewModel.orderData.observe(viewLifecycleOwner, orderObserver)
