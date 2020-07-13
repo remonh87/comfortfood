@@ -14,7 +14,7 @@ class MethodChannelHandlerTest {
     @MockK
     lateinit var result: MethodChannel.Result
 
-    lateinit var sut: MethodChannelHandler
+    lateinit var sut: OrderMethodCallHandler
 
     @MockK
     lateinit var order: Order
@@ -22,7 +22,7 @@ class MethodChannelHandlerTest {
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
-        sut = MethodChannelHandler(order::add)
+        sut = OrderMethodCallHandler(order::add)
     }
 
     @Test
@@ -46,7 +46,7 @@ class MethodChannelHandlerTest {
         val call = MethodCall("completeOrder", "Faulty string")
         sut.onMethodCall(call, result)
 
-        verify(exactly = 1) { result.error(MethodChannelHandler.fatalFailureCode, any(), any()) }
+        verify(exactly = 1) { result.error(OrderMethodCallHandler.fatalFailureCode, any(), any()) }
     }
 }
 

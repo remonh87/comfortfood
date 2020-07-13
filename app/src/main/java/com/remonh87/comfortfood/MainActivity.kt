@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         MethodChannel(
             app.flutterEngine.dartExecutor.binaryMessenger,
             "comfortfoodChannel"
-        ).setMethodCallHandler(MethodChannelHandler(viewModel::addToOrder))
+        ).setMethodCallHandler(OrderMethodCallHandler(viewModel::addToOrder))
 
         val fragment = LaunchScreenFragment()
 
